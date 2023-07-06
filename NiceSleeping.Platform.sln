@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{83BE80D3-785D-4306-91EC-10930F861E00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NicesleepingShop.WebApi", "src\Nicesleeping.WebApi\NicesleepingShop.WebApi.csproj", "{1CC24629-8989-4768-9CF4-32A6CD6FE581}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NicesleepingShop.Domain", "src\Nicesleeping.Domain\NicesleepingShop.Domain.csproj", "{CCFB14CF-287C-485C-8C85-8234096369B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NicesleepingShop.DataAccess", "src\NicesleepingShop.DataAccess\NicesleepingShop.DataAccess.csproj", "{78B3CB53-0E3A-4714-A5E4-69B7812DB744}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NicesleepingShop.Service", "src\NicesleepingShop.Service\NicesleepingShop.Service.csproj", "{4BBBDF7D-4B9C-462E-917B-72D5884A505C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{C7326A32-C8E0-474A-82A3-49E37A97EF38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nicesleeping.UnitTest", "test\Nicesleeping.UnitTest\Nicesleeping.UnitTest.csproj", "{3C7B8BB4-BEF1-402B-ACB4-BE5499DDBAB5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1CC24629-8989-4768-9CF4-32A6CD6FE581}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CC24629-8989-4768-9CF4-32A6CD6FE581}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CC24629-8989-4768-9CF4-32A6CD6FE581}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CC24629-8989-4768-9CF4-32A6CD6FE581}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCFB14CF-287C-485C-8C85-8234096369B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCFB14CF-287C-485C-8C85-8234096369B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCFB14CF-287C-485C-8C85-8234096369B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCFB14CF-287C-485C-8C85-8234096369B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78B3CB53-0E3A-4714-A5E4-69B7812DB744}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78B3CB53-0E3A-4714-A5E4-69B7812DB744}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78B3CB53-0E3A-4714-A5E4-69B7812DB744}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78B3CB53-0E3A-4714-A5E4-69B7812DB744}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BBBDF7D-4B9C-462E-917B-72D5884A505C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BBBDF7D-4B9C-462E-917B-72D5884A505C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BBBDF7D-4B9C-462E-917B-72D5884A505C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BBBDF7D-4B9C-462E-917B-72D5884A505C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C7B8BB4-BEF1-402B-ACB4-BE5499DDBAB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C7B8BB4-BEF1-402B-ACB4-BE5499DDBAB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C7B8BB4-BEF1-402B-ACB4-BE5499DDBAB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C7B8BB4-BEF1-402B-ACB4-BE5499DDBAB5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1CC24629-8989-4768-9CF4-32A6CD6FE581} = {83BE80D3-785D-4306-91EC-10930F861E00}
+		{CCFB14CF-287C-485C-8C85-8234096369B0} = {83BE80D3-785D-4306-91EC-10930F861E00}
+		{78B3CB53-0E3A-4714-A5E4-69B7812DB744} = {83BE80D3-785D-4306-91EC-10930F861E00}
+		{4BBBDF7D-4B9C-462E-917B-72D5884A505C} = {83BE80D3-785D-4306-91EC-10930F861E00}
+		{3C7B8BB4-BEF1-402B-ACB4-BE5499DDBAB5} = {C7326A32-C8E0-474A-82A3-49E37A97EF38}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C47AF24D-D115-48F7-BA79-1B0F29992145}
+	EndGlobalSection
+EndGlobal
