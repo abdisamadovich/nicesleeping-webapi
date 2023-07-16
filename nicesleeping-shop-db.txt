@@ -1,0 +1,92 @@
+create table users
+(
+	id bigint generated always as identity primary key,	
+	first_name varchar(50) not null,
+	last_name varchar(50) not null,
+	phone_number varchar(13) not null,
+	phone_number_confirmed bool default false,
+	region text,
+	address text,
+	password_hash text not null,
+	salt text not null,
+	created_at timestamp without time zone default now(),
+	updated_at timestamp without time zone default now()
+)
+
+create table categories
+(
+	id bigint generated always as identity primary key,
+	name  varchar(50) not null,
+	description text,
+	created_at timestamp without time zone default now(),
+	updated_at timestamp without time zone default now()
+)
+
+create table materials
+(
+	id bigint generated always as identity primary key,
+	name  varchar(50) not null,
+	description text not null,
+	created_at timestamp without time zone default now(),
+	updated_at timestamp without time zone default now()
+)
+
+create table discounts
+(
+	id bigint generated always as identity primary key,
+	name text not null,
+	percentage smallint,
+	start_at timestamp without time zone not null,
+	end_at timestamp without time zone not null,
+	description text,
+	created_at timestamp without time zone default now(),
+	updated_at timestamp without time zone default now()
+)
+
+create table products
+(
+	id bigint generated always as identity primary key,
+	discount_id bigint references discounts (id),
+	name varchar(50) not null,
+	image_path text not null,
+	unit_price double PRECISION not null,
+	description text,
+	created_at timestamp without time zone default now(),
+	updated_at timestamp without time zone default now()
+)
+
+create table orders 
+(	
+	id bigint generated always as identity primary key,
+	user_id bigint references users (id),
+	category_id bigint references categories (id),
+	material_id bigint references materials (id),
+	product_id bigint references products (id),
+	quantity integer not null,
+	status text not null,
+	heigh double PRECISION not null,
+	width double PRECISION not null,
+	total_price double PRECISION not null,
+	discount_price double PRECISION not null,
+	price double PRECISION not null,
+	description text,
+	updated_at timestamp without time zone default now(),
+	created_At timestamp without time zone default now()
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
