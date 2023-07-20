@@ -8,11 +8,9 @@ public class Order:Auditable
 
     public long ProductId { get; set; }
 
-    public long CategoryId { get; set; }
-
-    public long MaterialId { get; set; }
-
     public OrderStatus Status { get; set; }
+
+    public string Description { get; set; } = string.Empty;
 
     public int Quantity { get; set; }
 
@@ -29,6 +27,4 @@ public class Order:Auditable
     public PaymentType Payment { get; set; }
 
     public bool IsPaid { get; set; }
-
-    public string Description { get; set; } = string.Empty;
 }

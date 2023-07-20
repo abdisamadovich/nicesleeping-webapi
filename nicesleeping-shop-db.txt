@@ -60,7 +60,7 @@ create table orders
 	id bigint generated always as identity primary key,
 	user_id bigint references users (id),
 	category_id bigint references categories (id),
-	material_id bigint references materials (id),
+	material_id bigint references materials (id),	
 	product_id bigint references products (id),
 	quantity integer not null,
 	status text not null,
