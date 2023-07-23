@@ -8,9 +8,23 @@ namespace NicesleepingShop.DataAccess.Repositories.Categories;
 
 public class CategoryRepository : BaseRepository, ICategoryRepository
 {
-    public Task<long> CountAsync()
+    public async Task<long> CountAsync()
     {
-        throw new NotImplementedException();
+        try
+        {
+            await _connection.OpenAsync();
+            string query = $"select count(*) from categories";
+            var result = await _connection.QuerySingleAsync<long>(query);
+            return result;
+        }
+        catch
+        {
+            return 0;
+        }
+        finally
+        {
+            await _connection.CloseAsync();
+        }
     }
 
     public async Task<int> CreateAsync(Category entity)
@@ -74,7 +88,7 @@ public class CategoryRepository : BaseRepository, ICategoryRepository
         }
     }
 
-    public async Task<Category> GetByIdAsync(long id)
+    public async Task<Category?> GetByIdAsync(long id)
     {
         try
         {
@@ -85,7 +99,7 @@ public class CategoryRepository : BaseRepository, ICategoryRepository
         }
         catch
         {
-            return new Category();
+            return null;
         }
         finally
         {

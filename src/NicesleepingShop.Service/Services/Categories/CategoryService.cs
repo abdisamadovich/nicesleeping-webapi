@@ -16,6 +16,12 @@ public class CategoryService : ICategoryService
         this._categoryRepository = category;
     }
 
+    public async Task<long> CountAsync()
+    {
+        return await _categoryRepository.CountAsync();
+
+    }
+
     public async Task<bool> CreateAsync(CategoryCreateDto dto)
     {
         var category = new Category();

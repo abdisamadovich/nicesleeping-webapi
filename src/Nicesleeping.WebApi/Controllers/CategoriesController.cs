@@ -6,7 +6,7 @@ using NicesleepingShop.Domain.Entities.Categories;
 using NicesleepingShop.Service.Dtos.Categories;
 using NicesleepingShop.Service.Interfaces.Categories;
 
-namespace NicesleepingShop.WebApi.Controllers; 
+namespace NicesleepingShop.WebApi.Controllers;
 
 [Route("api/categories")]
 [ApiController]
@@ -26,6 +26,13 @@ public class CategoriesController : ControllerBase
         return Ok(await _categoryService.CreateAsync(category));
     }
 
+    [HttpGet("Count")]
+    public async Task<IActionResult> CountAsync()
+    {
+        return Ok(await _categoryService.CountAsync());
+    }
+
+
     [HttpGet]
     public async Task<IActionResult> GetAllAsync([FromQuery] int page = 1)
     {
@@ -37,4 +44,6 @@ public class CategoriesController : ControllerBase
     {
         return Ok(await _categoryService.DeleteAsync(categoryId));
     }
+
+
 }

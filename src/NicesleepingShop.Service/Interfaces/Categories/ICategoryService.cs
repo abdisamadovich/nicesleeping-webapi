@@ -10,5 +10,7 @@ public interface ICategoryService
     public Task<bool> UpdateAsync(CategoryCreateDto dto);
 
     public Task<IList<Category>> GetAllAsync(PaginationParams @params);
-    Task<object?> DeleteAsync(long categoryId);
+    public Task<object?> DeleteAsync(long categoryId);
+
+    public Task<long> CountAsync();
 }
