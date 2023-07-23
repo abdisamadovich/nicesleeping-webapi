@@ -60,7 +60,7 @@ public class CategoryRepository : BaseRepository, ICategoryRepository
         {
             await _connection.OpenAsync();
             string query = $"SELECT * FROM categories order by id desc " +
-                $"offset {@params.SkipCount} limit {@params.PageSize}";
+                $"offset {@params.GetSkipCount()} limit {@params.PageSize}";
             var result = (await _connection.QueryAsync<Category>(query)).ToList();
             return result;
         }
@@ -74,9 +74,23 @@ public class CategoryRepository : BaseRepository, ICategoryRepository
         }
     }
 
-    public Task<Category> GetByIdAsync(long id)
+    public async Task<Category> GetByIdAsync(long id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            await _connection.OpenAsync();
+            string query = $"SELECT * FROM categories where id = @Id";
+            var result = await _connection.QuerySingleAsync<Category>(query, new { Id = id });
+            return result;
+        }
+        catch
+        {
+            return new Category();
+        }
+        finally
+        {
+            await _connection.CloseAsync();
+        }
     }
 
     public Task<int> UpdateAsync(long id, Category entity)

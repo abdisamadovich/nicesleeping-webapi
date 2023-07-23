@@ -1,3 +1,10 @@
+using NicesleepingShop.DataAccess.Interfaces.Categories;
+using NicesleepingShop.DataAccess.Repositories.Categories;
+using NicesleepingShop.Service.Interfaces.Categories;
+using NicesleepingShop.Service.Interfaces.Common;
+using NicesleepingShop.Service.Services.Categories;
+using NicesleepingShop.Service.Services.Common;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +14,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//>
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IFileService,FileService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+//>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

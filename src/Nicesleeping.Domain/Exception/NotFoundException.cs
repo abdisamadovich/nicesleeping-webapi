@@ -2,7 +2,7 @@
 
 namespace NicesleepingShop.Domain.Exception;
 
-public class NotFoundException 
+public class NotFoundException : WebException
 {
     public HttpStatusCode StatusCode { get; set; } = HttpStatusCode.NotFound;
 
