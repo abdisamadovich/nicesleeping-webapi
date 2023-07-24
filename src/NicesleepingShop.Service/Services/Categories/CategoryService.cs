@@ -1,6 +1,7 @@
 ﻿using NicesleepingShop.DataAccess.Interfaces.Categories;
 using NicesleepingShop.DataAccess.Utils;
 using NicesleepingShop.Domain.Entities.Categories;
+using NicesleepingShop.Domain.Exception.Categories;
 using NicesleepingShop.Service.Common.Helpers;
 using NicesleepingShop.Service.Dtos.Categories;
 using NicesleepingShop.Service.Interfaces.Categories;
@@ -15,11 +16,10 @@ public class CategoryService : ICategoryService
     {
         this._categoryRepository = category;
     }
-
+        
     public async Task<long> CountAsync()
     {
         return await _categoryRepository.CountAsync();
-
     }
 
     public async Task<bool> CreateAsync(CategoryCreateDto dto)
@@ -42,6 +42,13 @@ public class CategoryService : ICategoryService
     {
         var category = await _categoryRepository.GetAllAsync(@params);
         return category;
+    }
+
+    public async Task<Category> GetByIdAsync(long categoryId)
+    {
+        var category = await _categoryRepository.GetByIdAsync(categoryId);
+        if (category is null) throw new CategoryNotFoundException();
+        else return category;
     }
 
     public Task<bool> UpdateAsync(CategoryCreateDto dto)

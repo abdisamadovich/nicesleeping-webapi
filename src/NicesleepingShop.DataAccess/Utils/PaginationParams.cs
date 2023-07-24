@@ -12,14 +12,6 @@ public class PaginationParams
         PageSize = pageSize;
     }
 
-    public int SkipCount
-    {
-        get
-        {
-            return (PageNumber - 1) * PageSize;
-        }
-    }
-
     public int GetSkipCount()
     {
         return (PageNumber - 1) * PageSize;

@@ -13,7 +13,7 @@ namespace NicesleepingShop.WebApi.Controllers;
 public class CategoriesController : ControllerBase
 {
     private readonly ICategoryService _categoryService;
-    private readonly int maxPageSize = 30;
+    private readonly int maxPageSize = 2;
     public CategoriesController(ICategoryService categoryService)
     {
         this._categoryService = categoryService;
@@ -26,7 +26,13 @@ public class CategoriesController : ControllerBase
         return Ok(await _categoryService.CreateAsync(category));
     }
 
-    [HttpGet("Count")]
+    [HttpGet("{categoryId}")]
+    public async Task<IActionResult> GetByIdAsync(long categoryId)
+    {
+        return Ok(await _categoryService.GetByIdAsync(categoryId));
+    }
+
+    [HttpGet("count")]
     public async Task<IActionResult> CountAsync()
     {
         return Ok(await _categoryService.CountAsync());
@@ -39,11 +45,9 @@ public class CategoriesController : ControllerBase
         return Ok(await _categoryService.GetAllAsync(new PaginationParams(page, maxPageSize )));
     }
 
-    [HttpDelete]
+    [HttpDelete("{categoryId}")]
     public async Task<IActionResult> DeleteAsync(long categoryId)
     {
         return Ok(await _categoryService.DeleteAsync(categoryId));
     }
-
-
 }

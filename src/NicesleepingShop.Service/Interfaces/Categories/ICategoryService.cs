@@ -13,4 +13,6 @@ public interface ICategoryService
     public Task<object?> DeleteAsync(long categoryId);
 
     public Task<long> CountAsync();
+
+    public Task<Category> GetByIdAsync(long categoryId);
 }
