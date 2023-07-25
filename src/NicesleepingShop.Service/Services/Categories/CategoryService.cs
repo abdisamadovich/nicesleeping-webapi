@@ -56,4 +56,17 @@ public class CategoryService : ICategoryService
         throw new NotImplementedException();
     }
 
+    public async Task<bool> UpdateAsync(long categoryId, CategoryUpdateDto dto)
+    {
+        var category = await _categoryRepository.GetByIdAsync(categoryId);
+        if (category is null) throw new CategoryNotFoundException();
+
+        //Parse new items to category
+        category.Name = dto.Name;
+        category.Description = dto.Description;
+        category.UpdatedAt = TimeHelper.GetDateTime();
+
+        var dbResult = await _categoryRepository.UpdateAsync(categoryId, category);
+        return dbResult > 0;
+    }
 }

@@ -107,8 +107,23 @@ public class CategoryRepository : BaseRepository, ICategoryRepository
         }
     }
 
-    public Task<int> UpdateAsync(long id, Category entity)
+    public async Task<int> UpdateAsync(long id, Category entity)
     {
-        throw new NotImplementedException();
+        try
+        {
+            await _connection.OpenAsync();
+            string query = $"UPDATE public.categories " +
+                $"SET name= @Name, description=@Description, created_at=@CreatedAt, updated_at=@UpdatedAt WHERE id = {id};";
+            var result = await _connection.ExecuteAsync(query,entity);
+            return result;
+        }
+        catch 
+        {
+            return 0;
+        }
+        finally
+        {
+            await _connection.CloseAsync(); 
+        }
     }
 }
