@@ -5,6 +5,7 @@ using NicesleepingShop.DataAccess.Utils;
 using NicesleepingShop.Domain.Entities.Categories;
 using NicesleepingShop.Service.Dtos.Categories;
 using NicesleepingShop.Service.Interfaces.Categories;
+using NicesleepingShop.Service.Validators.Dtos.Categories;
 
 namespace NicesleepingShop.WebApi.Controllers;
 
@@ -17,7 +18,6 @@ public class CategoriesController : ControllerBase
     public CategoriesController(ICategoryService categoryService)
     {
         this._categoryService = categoryService;
-
     }
 
     [HttpGet]
@@ -44,14 +44,21 @@ public class CategoriesController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateAsync([FromForm] CategoryCreateDto category)
     {
-        return Ok(await _categoryService.CreateAsync(category));
+        var createValidator = new CategoryCreateValidator();
+        var result = createValidator.Validate(category);
+        if(result.IsValid) return Ok(await _categoryService.CreateAsync(category)); 
+        else return BadRequest(result.Errors);
     }
 
 
     [HttpPut("{categoryId}")]
     public async Task<IActionResult> UpdateAsync(long categoryId, [FromForm] CategoryUpdateDto dto)
     {
-        return Ok(await _categoryService.UpdateAsync(categoryId, dto));
+        var updateValidator = new CategoryUpdateValidator();
+        var result = updateValidator.Validate(dto);
+        if (result.IsValid) return Ok(await _categoryService.UpdateAsync(categoryId, dto));
+        else return BadRequest(result.Errors);
+
     }
 
     [HttpDelete("{categoryId}")]

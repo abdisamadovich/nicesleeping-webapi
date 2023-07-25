@@ -1,8 +1,11 @@
-﻿namespace NicesleepingShop.Service.Dtos.Categories;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace NicesleepingShop.Service.Dtos.Categories;
 
 public class CategoryCreateDto
 {
     public string Name { get; set; } = string.Empty;
+
 
     public string Description { get; set; } = string.Empty;        
 }
