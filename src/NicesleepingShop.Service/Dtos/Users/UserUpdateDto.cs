@@ -1,26 +1,24 @@
 ﻿using NicesleepingShop.Domain.Enum;
 using System.ComponentModel.DataAnnotations;
 
-namespace NicesleepingShop.Domain.Entities.Users;
+namespace NicesleepingShop.Service.Dtos.Users;
 
-public class User:Auditable
+public class UserUpdateDto
 {
-    [MaxLength(50)]
     public string FirstName { get; set; } = string.Empty;
 
-    [MaxLength(50)]
     public string LastName { get; set; } = string.Empty;
 
-    [MaxLength(13)]
     public string PhoneNumber { get; set; } = string.Empty;
 
     public bool PhoneNumberConfirmed { get; set; }
 
-    public string Address { get; set; } = string.Empty; 
+    public string Address { get; set; } = string.Empty;
 
     public string PasswordHash { get; set; } = string.Empty;
 
     public string Salt { get; set; } = string.Empty;
 
-    public RoleIdentity RoleType { get; set; }  
+    public RoleIdentity RoleType { get; set; }
+
 }

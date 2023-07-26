@@ -20,6 +20,7 @@ public class CategoriesController : ControllerBase
     {
         this._categoryService = categoryService;
     }
+    
 
     [HttpGet]
     public async Task<IActionResult> GetAllAsync([FromQuery] int page = 1)
