@@ -14,7 +14,10 @@ namespace NicesleepingShop.WebApi.Controllers;
 public class CategoriesController : ControllerBase
 {
     private readonly ICategoryService _categoryService;
+
     private readonly int maxPageSize = 30;
+
+
     public CategoriesController(ICategoryService categoryService)
     {
         this._categoryService = categoryService;
