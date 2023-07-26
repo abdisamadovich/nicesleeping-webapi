@@ -1,14 +1,17 @@
 using NicesleepingShop.DataAccess.Interfaces.Categories;
 using NicesleepingShop.DataAccess.Interfaces.Products;
+using NicesleepingShop.DataAccess.Interfaces.Users;
 using NicesleepingShop.DataAccess.Repositories.Categories;
 using NicesleepingShop.DataAccess.Repositories.Products;
+using NicesleepingShop.DataAccess.Repositories.Users;
 using NicesleepingShop.Service.Interfaces.Categories;
 using NicesleepingShop.Service.Interfaces.Common;
 using NicesleepingShop.Service.Interfaces.Products;
+using NicesleepingShop.Service.Interfaces.Users;
 using NicesleepingShop.Service.Services.Categories;
 using NicesleepingShop.Service.Services.Common;
 using NicesleepingShop.Service.Services.Products;
-using System.Threading.RateLimiting;
+using NicesleepingShop.Service.Services.Users;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
@@ -17,10 +20,12 @@ builder.Services.AddSwaggerGen();
 
 //>
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IFileService,FileService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IUserService, UserService>();
 //>
 
 //development, stagging, production

@@ -16,4 +16,12 @@ public class PaginationParams
     {
         return (PageNumber - 1) * PageSize;
     }
+
+    public int SkipCount
+    {
+        get
+        {
+            return (PageNumber - 1) * PageSize;
+        }
+    }
 }

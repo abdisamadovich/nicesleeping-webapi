@@ -9,11 +9,11 @@
   <ItemGroup>
     <Folder Include="Common\Attributes\" />
     <Folder Include="Common\Exceptions\" />
-    <Folder Include="Common\Security\" />
     <Folder Include="Common\Validators\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net" Version="0.1.0" />
     <PackageReference Include="FluentValidation" Version="11.6.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
   </ItemGroup>
