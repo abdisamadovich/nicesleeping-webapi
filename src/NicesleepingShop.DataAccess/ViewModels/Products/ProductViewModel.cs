@@ -1,5 +1,7 @@
-﻿namespace NicesleepingShop.DataAccess.ViewModels.Products;
+﻿using NicesleepingShop.Domain.Entities.Products;
 
-public class ProductViewModel
+namespace NicesleepingShop.DataAccess.ViewModels.Products;
+
+public class ProductViewModel :Product
 {
 }

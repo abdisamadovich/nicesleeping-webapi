@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using NicesleepingShop.Service.Common.Helpers;
 using NicesleepingShop.Service.Interfaces.Common;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace NicesleepingShop.Service.Services.Common;
 
@@ -8,44 +10,42 @@ public class FileService : IFileService
 {
     private readonly string MEDIA = "media";
     private readonly string IMAGES = "images";
-    //private readonly string AVATARS = "avatars";
     private readonly string ROOTPATH;
     public FileService(IWebHostEnvironment env)
     {
-       
-    }
-    public Task<string> DelateAvatarAsync(string subpath)
-    {
-        throw new NotImplementedException();
+        ROOTPATH = env.WebRootPath;
     }
 
-    public Task<string> DelateImageAsync(string subpath)
+    
+
+    public async Task<bool> DeleteImageAsync(string subpath)
     {
-        throw new NotImplementedException();
+        string path = Path.Combine(ROOTPATH, subpath);
+        if (File.Exists(path))
+        {
+            await Task.Run(() =>
+            {
+                File.Delete(path);
+            });
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
-    public Task<string> DeleteImageAsync(string subpath)
+    public async Task<string> UploadImageAsync(IFormFile image)
     {
-        throw new NotImplementedException();
-    }
+        string newImageName = MediaHelper.MakeImageName(image.FileName);
+        string subpath = Path.Combine(MEDIA, IMAGES, newImageName);
+        string path = Path.Combine(ROOTPATH, subpath);
 
-    public Task<string> UploadAvatarAsync(IFormFile avatar)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<string> UploadImageAsync(IFormFile image)
-    {
-        throw new NotImplementedException();
-    }
-
-    Task<bool> IFileService.DelateAvatarAsync(string subpath)
-    {
-        throw new NotImplementedException();
-    }
-
-    Task<bool> IFileService.DeleteImageAsync(string subpath)
-    {
-        throw new NotImplementedException();
+        var stream = new FileStream(path, FileMode.Create);
+        await image.CopyToAsync(stream);
+        stream.Close();
+        return subpath;
     }
 }
+    
+
