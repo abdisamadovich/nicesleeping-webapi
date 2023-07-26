@@ -51,11 +51,6 @@ public class CategoryService : ICategoryService
         else return category;
     }
 
-    public Task<bool> UpdateAsync(CategoryCreateDto dto)
-    {
-        throw new NotImplementedException();
-    }
-
     public async Task<bool> UpdateAsync(long categoryId, CategoryUpdateDto dto)
     {
         var category = await _categoryRepository.GetByIdAsync(categoryId);

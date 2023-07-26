@@ -16,9 +16,8 @@ public class FileService : IFileService
         ROOTPATH = env.WebRootPath;
     }
 
-    
-
     public async Task<bool> DeleteImageAsync(string subpath)
+
     {
         string path = Path.Combine(ROOTPATH, subpath);
         if (File.Exists(path))

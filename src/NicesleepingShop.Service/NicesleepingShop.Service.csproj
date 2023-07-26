@@ -10,6 +10,7 @@
     <Folder Include="Common\Attributes\" />
     <Folder Include="Common\Exceptions\" />
     <Folder Include="Common\Validators\" />
+    <Folder Include="Validators\Dtos\Products\NewFolder\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -10,7 +10,7 @@ public interface ICategoryService
     public Task<bool> UpdateAsync(long CategoryId,CategoryUpdateDto dto);
 
     public Task<IList<Category>> GetAllAsync(PaginationParams @params);
-    public Task<object?> DeleteAsync(long categoryId);
+    public Task<object?> DeleteAsync(long productId);
 
     public Task<long> CountAsync();
 

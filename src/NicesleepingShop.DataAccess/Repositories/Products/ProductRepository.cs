@@ -122,10 +122,10 @@ public class ProductRepository : BaseRepository, IProductRepository
         {
             await _connection.OpenAsync();
             string query = $"UPDATE public.products " +
-                $"SET category_id=@CategoryId, name=@Name, material=@Status, " +
-                $"image_path=@ImagePath, unit_price=@UnitPrice, description=@Description, " +
-                $"created_at=@CreatedAt, updated_at=@UpdatedAt WHERE id = {id};";
-            var result = await _connection.ExecuteAsync(query);
+                $"SET category_id = @CategoryId, name = @Name, status = @Status, " +
+                $"image_path = @ImagePath, unit_price = @UnitPrice, description = @Description, " +
+                $"created_at = @CreatedAt, updated_at = @UpdatedAt WHERE id = {id};";
+            var result = await _connection.ExecuteAsync(query,entity);
             return result;
         }
         catch 
