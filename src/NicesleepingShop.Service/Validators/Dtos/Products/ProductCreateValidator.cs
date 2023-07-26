@@ -13,7 +13,7 @@ public class ProductCreateValidator : AbstractValidator<ProductCreateDto>
             .MaximumLength(50).WithMessage("Name must be less than 50 characters");
 
         RuleFor(dto => dto.Description).NotNull().NotEmpty().WithMessage("Description field is required!")
-            .MinimumLength(20).WithMessage("Description field is required!");
+            .MinimumLength(10).WithMessage("Description field is required!");
 
         RuleFor(dto => dto.UnitPrice).NotNull().NotEmpty().WithMessage("Unit price field is required!");
 
