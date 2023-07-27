@@ -26,6 +26,11 @@ public class UserService : IUserService
     }
     public async Task<long> CountAsync() => await _userRepository.CountAsync();
 
+    public Task<long> CreateAsync(UserCreateDto userCreateDto)
+    {
+        throw new NotImplementedException();
+    }
+
 
     /*public async Task<long> CreateAsync(UserCreateDto userCreateDto)
     {
