@@ -7,5 +7,5 @@ namespace NicesleepingShop.DataAccess.Interfaces.Categories.Discounts;
 public interface IDiscountRepository : IRepository<Discount, Discount>,
     IGetAll<Discount>
 {
-    public Task<IList<Discount>> GetAllByDurationAsync(DateTime startAt, DateTime endAt, PaginationParams @params);
+    //public Task<IList<Discount>> GetAllByDurationAsync(DateTime startAt, DateTime endAt, PaginationParams @params);
 }

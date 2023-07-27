@@ -1,7 +1,5 @@
 ﻿using NicesleepingShop.DataAccess.Utils;
-using NicesleepingShop.Domain.Entities.Categories;
 using NicesleepingShop.Domain.Entities.Products;
-using NicesleepingShop.Service.Dtos.Categories;
 using NicesleepingShop.Service.Dtos.Products;
 
 namespace NicesleepingShop.Service.Interfaces.Products;
