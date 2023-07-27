@@ -4,7 +4,7 @@
     {
         public static string Symbols { get; } = "~`!@#$%^&*()_-+={[}]|\\:;\"'<,>.?/";
         //public static (bool IsValiid, string Message) IsStrongPassword(string password)
-        public static (bool isValiid, string Message) IsStrongPassword(string password)
+        public static (bool isValid, string Message) IsStrongPassword(string password)
         {
             if (password.Length < 8) return (IsValid: false, Message: "Password 8 tadan kam b'lmasligi kerak");
 

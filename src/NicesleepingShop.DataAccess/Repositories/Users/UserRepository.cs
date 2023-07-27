@@ -1,6 +1,9 @@
 ﻿using Dapper;
+using NicesleepingShop.DataAccess.Common.Interfaces;
+using NicesleepingShop.DataAccess.Interfaces;
 using NicesleepingShop.DataAccess.Interfaces.Users;
 using NicesleepingShop.DataAccess.Utils;
+using NicesleepingShop.DataAccess.ViewModels.Users;
 using NicesleepingShop.Domain.Entities.Users;
 
 namespace NicesleepingShop.DataAccess.Repositories.Users;
@@ -78,6 +81,7 @@ public class UserRepository : BaseRepository,IUserRepository
             await _connection.CloseAsync();
         }
     }
+
     public async Task<User?> GetByIdAsync(long id)
     {
         try
@@ -94,7 +98,24 @@ public class UserRepository : BaseRepository,IUserRepository
         finally { await _connection.CloseAsync(); }
     }
 
-    public Task<(int ItemsCount, IList<User>)> Searchable(string search, PaginationParams @params)
+    public async Task<User?> GetByPhoneAsync(string phone)
+    {
+        try
+        {
+            await _connection.OpenAsync();
+            string query = "SELECT * FROM users where phone_number = @PhoneNumber";
+            var data = await _connection.QuerySingleAsync<User>(query, new { PhoneNumber = phone });
+            return data;
+        }
+        catch
+        {
+
+            return null;
+        }
+        finally { await _connection.CloseAsync(); }
+    }
+
+    public Task<(int ItemsCount, IList<UserViewModel>)> Searchable(string search, PaginationParams @params)
     {
         throw new NotImplementedException();
     }
@@ -122,4 +143,6 @@ public class UserRepository : BaseRepository,IUserRepository
             await _connection.CloseAsync();
         }
     }
+
+    
 }

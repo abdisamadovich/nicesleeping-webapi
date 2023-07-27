@@ -15,10 +15,10 @@ namespace NicesleepingShop.Service.Validators.Dtos.Users
         public UserCreateValidator()
         {
             RuleFor(dto => dto.FirstName).NotNull().NotEmpty().WithMessage("Firstname is required")
-            .MaximumLength(30).WithMessage("Firstname must be less than 30 characters");
+            .MaximumLength(50).WithMessage("Firstname must be less than 30 characters");
 
             RuleFor(dto => dto.LastName).NotNull().NotEmpty().WithMessage("Lastname is required")
-                .MaximumLength(30).WithMessage("Lastname must be less than 30 characters");
+                .MaximumLength(50).WithMessage("Lastname must be less than 30 characters");
 
             RuleFor(dto => dto.PhoneNumber).Must(phone => PhoneNumberValidator.IsValid(phone))
             
@@ -27,10 +27,10 @@ namespace NicesleepingShop.Service.Validators.Dtos.Users
             
 
             RuleFor(dto => dto.Address).NotNull().NotEmpty().WithMessage("Address is required!")
-                .MaximumLength(30).WithMessage("Address must be less than 30 characters");
+                .MaximumLength(100).WithMessage("Address must be less than 100 characters");
 
             RuleFor(dto => dto.PasswordHash).NotNull().NotEmpty().WithMessage("Password is requuired")
-                .Must(password => PasswordValidator.IsStrongPassword(password).isValiid).WithMessage("Password is not strong password!");
+                .Must(password => PasswordValidator.IsStrongPassword(password).isValid).WithMessage("Password is not strong password!");
         }
     }
 }

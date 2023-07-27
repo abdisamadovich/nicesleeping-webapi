@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NicesleepingShop.DataAccess.Utils;
+using NicesleepingShop.Domain.Entities.Categories;
 using NicesleepingShop.Service.Dtos.Users;
 using NicesleepingShop.Service.Interfaces.Users;
 using NicesleepingShop.Service.Validators.Dtos.Users;
@@ -26,7 +27,12 @@ namespace NicesleepingShop.WebApi.Controllers
             return Ok(await _userService.GetAllAsync(new PaginationParams(page, maxPageSize)));
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetByIdAsync(long userId)
+        {
+            return Ok(await _userService.GetByIdAsync(userId));
 
+        }
 
 
         [HttpGet("count")]
@@ -46,7 +52,7 @@ namespace NicesleepingShop.WebApi.Controllers
         }
 
 
-        [HttpPut("{userId}")]
+        [HttpPut("userId")]
         public async Task<IActionResult> UpdateAsync(long Id, [FromForm] UserUpdateDto userUpdateDto)
         {
             var updateValidator = new UserUpdateValidator();
@@ -60,5 +66,7 @@ namespace NicesleepingShop.WebApi.Controllers
         {
             return Ok(await _userService.DeleteAsync(userId));
         }
+
+
     }
 }

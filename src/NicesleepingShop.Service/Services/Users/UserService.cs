@@ -1,7 +1,12 @@
-﻿using NicesleepingShop.DataAccess.Interfaces.Users;
+﻿using NicesleepingShop.DataAccess.Interfaces;
+using NicesleepingShop.DataAccess.Interfaces.Users;
 using NicesleepingShop.DataAccess.Utils;
+using NicesleepingShop.Domain.Entities.Categories;
+using NicesleepingShop.Domain.Entities.Products;
 using NicesleepingShop.Domain.Entities.Users;
 using NicesleepingShop.Domain.Exception;
+using NicesleepingShop.Domain.Exception.Categories;
+using NicesleepingShop.Domain.Exception.Products;
 using NicesleepingShop.Service.Common.Helpers;
 using NicesleepingShop.Service.Common.Security;
 using NicesleepingShop.Service.Dtos.Users;
@@ -56,8 +61,15 @@ public class UserService : IUserService
 
     public async Task<IList<User>> GetAllAsync(PaginationParams @params)
     {
-        var userss = await _userRepository.GetAllAsync(@params);
-        return userss;
+        var users = await _userRepository.GetAllAsync(@params);
+        return users;
+    }
+
+    public async Task<User> GetByIdAsync(long userId)
+    {
+        var user = await _userRepository.GetByIdAsync(userId);
+        if (user is null) throw new CategoryNotFoundException();
+        return user;
     }
 
     public async Task<bool> UpdateAsync(long id, UserUpdateDto userUpdateDto)
