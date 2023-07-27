@@ -7,7 +7,7 @@ namespace NicesleepingShop.Service.Interfaces.Users
 {
     public interface IUserService
     {
-        public Task<long> CreateAsync(UserCreateDto userCreateDto);
+        /*public Task<long> CreateAsync(UserCreateDto userCreateDto);*/
 
         public Task<bool> DeleteAsync(long id);
 

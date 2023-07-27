@@ -26,7 +26,7 @@ public class UserService : IUserService
     public async Task<long> CountAsync() => await _userRepository.CountAsync();
 
 
-    public async Task<long> CreateAsync(UserCreateDto userCreateDto)
+    /*public async Task<long> CreateAsync(UserCreateDto userCreateDto)
     {
         User user = new User()
         {
@@ -49,7 +49,7 @@ public class UserService : IUserService
         var res = await _userRepository.CreateAsync(user);
         return res;
 
-    }
+    }*/
 
     public async Task<bool> DeleteAsync(long id)
     {

@@ -42,14 +42,14 @@ namespace NicesleepingShop.WebApi.Controllers
         }
 
 
-        [HttpPost("Create")]
+        /*[HttpPost("Create")]
         public async Task<IActionResult> CreateAsync([FromForm] UserCreateDto user)
         {
             var createValidator = new UserCreateValidator();
             var result = createValidator.Validate(user);
             if(result.IsValid) return Ok(await _userService.CreateAsync(user)); 
             else return BadRequest(result.Errors);
-        }
+        }*/
 
 
         [HttpPut("userId")]
