@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using NicesleepingShop.Service.Dtos.Auth;
 using NicesleepingShop.Service.Interfaces.Auth;
+using NicesleepingShop.Service.Validators;
 using NicesleepingShop.Service.Validators.Dtos.Auth;
+using System.ComponentModel.DataAnnotations;
 
 namespace NicesleepingShop.WebApi.Controllers;
 
@@ -27,5 +29,14 @@ public class AuthController : ControllerBase
             return Ok(new { serviceResult.Result, serviceResult.CachedMinutes });
         }
         else return BadRequest(result.Errors);
+    }
+
+    [HttpPost("register/send-code")]
+    public async Task<IActionResult> SendCodeRegisterAsync(string phone)
+    {
+        var result = PhoneNumberValidator.IsValid(phone);
+        if (result = false) return BadRequest("Phone number is invalid!");
+        var serviceResult = await _authService.SendCodeForRegisterAsync(phone);
+        return Ok(new { serviceResult.Result,serviceResult.CachedVerificationMinutes});
     }
 }

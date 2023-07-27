@@ -7,6 +7,7 @@ using NicesleepingShop.Domain.Entities.Users;
 using NicesleepingShop.Domain.Exception;
 using NicesleepingShop.Domain.Exception.Categories;
 using NicesleepingShop.Domain.Exception.Products;
+using NicesleepingShop.Domain.Exception.Users;
 using NicesleepingShop.Service.Common.Helpers;
 using NicesleepingShop.Service.Common.Security;
 using NicesleepingShop.Service.Dtos.Users;
@@ -54,7 +55,7 @@ public class UserService : IUserService
     public async Task<bool> DeleteAsync(long id)
     {
         var user = await _userRepository.GetByIdAsync(id);
-        if (user is null) throw new NotFoundException();
+        if (user is null) throw new UserNotFoundException();
         var result = await _userRepository.DeleteAsync(id);
         return result > 0;
     }
@@ -68,21 +69,20 @@ public class UserService : IUserService
     public async Task<User> GetByIdAsync(long userId)
     {
         var user = await _userRepository.GetByIdAsync(userId);
-        if (user is null) throw new CategoryNotFoundException();
+        if (user is null) throw new UserNotFoundException();
         return user;
     }
 
     public async Task<bool> UpdateAsync(long id, UserUpdateDto userUpdateDto)
     {
         var user = await _userRepository.GetByIdAsync(@id);
-        if (user is null) throw new NotFoundException();
+        if (user is null) throw new UserNotFoundException();
         user.FirstName = userUpdateDto.FirstName;
         user.LastName = userUpdateDto.LastName;
         user.PhoneNumber = userUpdateDto.PhoneNumber;
         user.PhoneNumberConfirmed = userUpdateDto.PhoneNumberConfirmed;
         user.Address = userUpdateDto.Address;
         user.PasswordHash = userUpdateDto.PasswordHash;
-        user.Salt = userUpdateDto.Salt;
         user.RoleType = userUpdateDto.RoleType;
         user.UpdatedAt = TimeHelper.GetDateTime();
         var rbResult = await _userRepository.UpdateAsync(id, user);

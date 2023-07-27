@@ -7,7 +7,7 @@ using NicesleepingShop.Service.Validators.Dtos.Users;
 
 namespace NicesleepingShop.WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/user")]
     [ApiController]
     public class UsersController : ControllerBase
     {
