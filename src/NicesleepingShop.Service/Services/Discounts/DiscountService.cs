@@ -22,9 +22,6 @@ namespace NicesleepingShop.Service.Services.Discounts
             var dis = new Discount();
             dis.Name = dto.Name;
             dis.Description = dto.Description;
-            dis.Percentage = dto.Percentage;
-            dis.StartAt = dto.StartAt;
-            dis.EndAt = dto.EndAt;
             dis.CreatedAt = dis.UpdatedAt = TimeHelper.GetDateTime();
             var res = await _repository.CreateAsync(dis);
             return res > 0;

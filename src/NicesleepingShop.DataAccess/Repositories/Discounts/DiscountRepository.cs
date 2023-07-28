@@ -32,8 +32,8 @@ namespace NicesleepingShop.DataAccess.Repositories.Discounts
             try
             {
                 await _connection.OpenAsync();
-                string query = "INSERT INTO public.discounts(name, percentage, start_at, end_at, description, created_at, updated_at)" +
-                    "VALUES (@Name, @Percentage, @StartAt, @EndAt, @Description, @CreatedAt, @UpdatedAt);";
+                string query = "INSERT INTO public.discounts(name, description, created_at, updated_at)" +
+                    "VALUES (@Name, @Description, @CreatedAt, @UpdatedAt);";
                 var result = await _connection.ExecuteAsync(query, entity);
                 return result;
             }

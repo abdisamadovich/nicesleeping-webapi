@@ -33,7 +33,7 @@ public class ProductRepository : BaseRepository, IProductRepository
         try
         {
             await _connection.OpenAsync();
-            string query = "INSERT INTO public.products(category_id, name, material, image_path, unit_price, description, created_at, updated_at) " +
+            string query = "INSERT INTO public.products(category_id, name, status, image_path, unit_price, description, created_at, updated_at) " +
                 "VALUES (@CategoryId, @Name, @Status, @ImagePath, @UnitPrice, @Description, @CreatedAt, @UpdatedAt);";
             var result = await _connection.ExecuteAsync(query,entity);
             return result;
